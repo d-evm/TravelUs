@@ -58,3 +58,4 @@ Thumbs.db
 application.properties
 application.yml
 .env
+src/main/resources/application.properties

@@ -11,20 +11,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class Document {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String fileName;
+    private String fileUrl;
 
     @ManyToOne
     private Group group;
 
-    private String fileName;
-
-    @Column(columnDefinition = "TEXT")
-    private String url;
-
     @ManyToOne
     private User uploadedBy;
 
-    private LocalDateTime uploadedAt = LocalDateTime.now();
+    private LocalDateTime uploadedAt;
 }

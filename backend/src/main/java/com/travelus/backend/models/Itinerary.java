@@ -30,5 +30,5 @@ public class Itinerary {
     private String location;
 
     private LocalDateTime startDate;
-    private LocalDateTime endData;
+    private LocalDateTime endDate;
 }
