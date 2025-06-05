@@ -60,7 +60,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-//        System.out.println("Login attempt received for username: " + request.getUsername());
 
         try {
             authenticationManager.authenticate(
@@ -70,20 +69,16 @@ public class AuthController {
                     )
             );
         } catch (BadCredentialsException e) {
-//            System.out.println("Invalid credentials for user: " + request.getUsername());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         } catch (Exception e) {
-//            e.printStackTrace(); // 🪵 Log unexpected issues
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error");
         }
 
-//        System.out.println("Credentials verified");
 
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         String token = jwtUtil.generateToken(user.getUsername());
-//        System.out.println("JWT generated: " + token);
         return ResponseEntity.ok(new AuthResponse(token));
     }
 }
