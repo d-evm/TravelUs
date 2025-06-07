@@ -33,7 +33,7 @@ public class JwtUtil {
     }
 
     public String extractUsername(String token){
-        return extractClaim(token, Claims::getSubject);     // This uses Java 8 method reference syntax: claims -> claims.getSubject()
+        return extractClaim(token, Claims::getSubject);
 
     }
 
@@ -55,12 +55,21 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
 
-    private Claims extractAllClaims(String token) {
+    public Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            extractAllClaims(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
