@@ -4,9 +4,9 @@ A comprehensive group travel management web application that simplifies travel p
 
 ## 📋 Table of Contents
 
-- [About](#about)
+- [About](##about)
 - [Features](#features)
-- [Tech Stack](#tech-stack)
+- [Tech Stack](##tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
